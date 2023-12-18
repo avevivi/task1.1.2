@@ -6,12 +6,6 @@ import jm.task.core.jdbc.util.Util;
 
 public class Main {
     public static void main(String[] args) {
-        // create table method
-        // adding 4 USER data (with sout)
-        // getting all users from table and sout (override toString)
-        // clear table method
-        // delete table method
-
         UserServiceImpl usi = new UserServiceImpl();
 
         usi.createUsersTable();

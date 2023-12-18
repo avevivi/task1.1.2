@@ -3,15 +3,15 @@ package jm.task.core.jdbc.dao;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-
-    //Создание таблицы для пользователей - не должно вызывать исключение, если такая таблица уже существует.
-    //Удаление таблицы для пользователей - не должно вызывать исключение, если таблица не существует.
-
     private static final String CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS users (id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255) NOT NULL, last_name VARCHAR(255) NOT NULL, age TINYINT NOT NULL)";
     private static final String DROP_USERS_TABLE_SQL = "DROP TABLE IF EXISTS users";
     private static final String SAVE_USER_SQL = "INSERT INTO users (name, last_name, age) VALUES (?, ?, ?)";
@@ -21,7 +21,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
 
     public UserDaoJDBCImpl() {
-        // has to be empty
+
     }
 
     public void createUsersTable() {
